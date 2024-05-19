@@ -18,31 +18,53 @@
     <div class="wrapper">
       <h1>Contact Us</h1>
       <div class="wrapper__name">
-        First Name This field is required Last Name This field is required
+        <label for="fName">First Name *</label>
+        <input id="fName" name="fName" type="text" />
+        <p class="error-msg">This field is required</p>
+        <label for="lName">Last Name *</label>
+        <input id="lName" name="lName" type="text" />
+        <p class="error-msg">This field is required</p>
       </div>
       <div class="wrapper__email">
-        Email Address Please enter a valid email address This field is required
+        <label for="email">Email Address *</label>
+        <input id="email" name="email" type="email" />
+        <p class="error-msg">Please enter a valid email address</p>
       </div>
       <div class="wrapper__query">
-        Query Type General Enquiry Support Request Please select a query type
+        <p>Query Type *</p>
+        <div><input id="generalQuery" type="radio" />General Enquiry</div>
+        <div><input id="supportQuery" type="radio" />Support Request</div>
+        <p class="error-msg">Please select a query type</p>
       </div>
-      <div class="wrapper__message">Message This field is required</div>
+      <div class="wrapper__message">
+        <label for="message">Message *</label>
+        <textarea name="message" id="message" rows="5"></textarea>
+        <p class="error-message">This field is required</p>
+      </div>
       <div class="wrapper__consent">
-        I consent to being contacted by the team * To submit this form, please
-        consent to being contacted
+        <div>
+          <input type="checkbox" />
+          <p>I consent to being contacted by the team *</p>
+        </div>
+        To submit this form, please consent to being contacted
       </div>
       <button class="wrapper__btn">Submit</button>
       <div class="msg-modal">
-        Message Sent! Thanks for completing the form. We'll be in touch soon!
+        <h3>Message Sent!</h3>
+        <p>Thanks for completing the form. We'll be in touch soon!</p>
       </div>
     </div>
 
-    <div class="attribution">
-      <p class="attribution__content">
+    <footer class="attribution">
+      <p>
         Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://github.com/ricardobvicentini"
+          >Ricardo Bruno Vicentini</a
+        >.
       </p>
-    </div>
+    </footer>
   </body>
 </html>
