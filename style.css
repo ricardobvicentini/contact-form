@@ -27,6 +27,7 @@ body {
   min-height: 100svh;
   background-color: var(--cl-primary-light-green);
   font-family: 'Karla', sans-serif;
+  font-size: 1rem;
   display: grid;
   place-items: center;
 }
@@ -35,6 +36,8 @@ input {
   padding: 1em;
   border: 1px solid var(--cl-border);
   border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .error-msg {
@@ -42,6 +45,7 @@ input {
 }
 
 .wrapper {
+  outline: 1px solid red;
   width: min(45rem, 90vw);
   background-color: var(--cl-neutral-white);
   display: flex;
@@ -50,13 +54,21 @@ input {
   border-radius: 15px;
 }
 
-.wrapper__names {
-  display: flex;
-  & .name-box {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
+.wrapper__names,
+.query-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  @media (width < 41.68em) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
   }
+}
+
+.name-box {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 }
 
 .wrapper__email {
@@ -65,18 +77,15 @@ input {
   flex-direction: column;
 }
 
-.wrapper__query {
-  & .query-box {
-    display: flex;
-    & > * {
-      flex-grow: 1;
-      padding: 1em;
-      border: 1px solid var(--cl-border);
-      border-radius: 5px;
-    }
-    & span {
-      margin-left: 1em;
-    }
+.query-box {
+  & > * {
+    outline: 1px solid red;
+    padding: 1em;
+    border: 1px solid var(--cl-border);
+    border-radius: 5px;
+  }
+  & span {
+    margin-left: 1em;
   }
 }
 
@@ -85,6 +94,7 @@ input {
   position: absolute;
   inset: 1.5rem 0 0 0;
   width: fit-content;
+  max-width: 80vw;
   height: fit-content;
   margin-inline: auto;
   padding: 1.5em;
