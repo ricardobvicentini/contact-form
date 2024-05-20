@@ -32,26 +32,40 @@ body {
   place-items: center;
 }
 
-input {
+input,
+textarea {
   padding: 1em;
   border: 1px solid var(--cl-border);
   border-radius: 5px;
   font-family: inherit;
   font-size: inherit;
+  resize: none;
+  cursor: pointer;
+  transition: border-color 200ms ease-in-out;
+  &:hover {
+    border-color: var(--cl-primary-green);
+  }
 }
 
 .error-msg {
   color: var(--cl-primary-red);
+  /* display: none; */
 }
 
 .wrapper {
-  outline: 1px solid red;
   width: min(45rem, 90vw);
   background-color: var(--cl-neutral-white);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 0.5rem;
   border-radius: 15px;
+  & h1,
+  form > * {
+    margin-bottom: 1.5rem;
+    & .asterisk {
+      color: var(--cl-primary-green);
+    }
+  }
 }
 
 .wrapper__names,
@@ -65,26 +79,36 @@ input {
   }
 }
 
-.name-box {
+.name-box,
+.wrapper__email,
+.wrapper__query,
+.wrapper__message,
+.wrapper__consent {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-}
-
-.wrapper__email {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .query-box {
   & > * {
-    outline: 1px solid red;
     padding: 1em;
     border: 1px solid var(--cl-border);
     border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 200ms ease-in-out;
+    &:hover {
+      border-color: var(--cl-primary-green);
+    }
   }
   & span {
+    margin-left: 1em;
+  }
+}
+
+.consent-box {
+  display: flex;
+  & p {
     margin-left: 1em;
   }
 }
@@ -108,10 +132,27 @@ input {
   }
 }
 
+.wrapper__btn {
+  background-color: var(--cl-primary-green);
+  /* letter-spacing: 2px; */
+  width: 100%;
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--cl-neutral-white);
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+  &:hover {
+    background-color: hsl(169, 88%, 13%);
+  }
+}
+
 /* Footer */
 .attribution {
   width: 100%;
-  padding: 1em;
+  padding: 0.8em;
   position: absolute;
   bottom: 0;
   font-size: 11px;
