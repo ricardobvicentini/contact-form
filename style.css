@@ -25,6 +25,7 @@ body {
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
+  padding-block: 2rem;
   background-color: var(--cl-primary-light-green);
   font-family: 'Karla', sans-serif;
   font-size: 1rem;
@@ -113,9 +114,17 @@ textarea {
   }
 }
 
+.wrapper__message {
+  & textarea {
+    height: 5.93rem;
+    @media (width < 41.68em) {
+      height: 15rem;
+    }
+  }
+}
+
 .wrapper__btn {
   background-color: var(--cl-primary-green);
-  /* letter-spacing: 2px; */
   width: 100%;
   padding: 1em;
   border: none;
@@ -143,6 +152,8 @@ textarea {
   background-color: var(--cl-neutral-dark-grey);
   color: var(--cl-neutral-white);
   translate: 0 -150%;
+  opacity: 0;
+  transition: translate 400ms ease-in-out, opacity 300ms ease-in-out;
   & .msg-modal__title {
     display: flex;
     gap: 0.8em;
@@ -162,14 +173,17 @@ textarea {
 @keyframes slide-down {
   0% {
     translate: 0 -150%;
+    opacity: 0;
   }
 
   50% {
     translate: 0 20%;
+    opacity: 0.8;
   }
 
   100% {
     translate: 0 3%;
+    opacity: 1;
   }
 }
 
