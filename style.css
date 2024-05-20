@@ -113,25 +113,6 @@ textarea {
   }
 }
 
-/*  Modal */
-.msg-modal {
-  position: absolute;
-  inset: 1.5rem 0 0 0;
-  width: fit-content;
-  max-width: 80vw;
-  height: fit-content;
-  margin-inline: auto;
-  padding: 1.5em;
-  border-radius: 10px;
-  background-color: var(--cl-neutral-dark-grey);
-  color: var(--cl-neutral-white);
-  & .msg-modal__title {
-    display: flex;
-    gap: 0.8em;
-    margin-bottom: 0.8em;
-  }
-}
-
 .wrapper__btn {
   background-color: var(--cl-primary-green);
   /* letter-spacing: 2px; */
@@ -146,6 +127,49 @@ textarea {
   transition: background-color 200ms ease-in-out;
   &:hover {
     background-color: hsl(169, 88%, 13%);
+  }
+}
+
+/*  Modal */
+.msg-modal {
+  position: fixed;
+  inset: 3% 0 0 0;
+  width: fit-content;
+  max-width: 80vw;
+  height: fit-content;
+  margin-inline: auto;
+  padding: 1.5em;
+  border-radius: 10px;
+  background-color: var(--cl-neutral-dark-grey);
+  color: var(--cl-neutral-white);
+  translate: 0 -150%;
+  & .msg-modal__title {
+    display: flex;
+    gap: 0.8em;
+    margin-bottom: 0.8em;
+  }
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
+
+.slide-down {
+  animation: slide-down 400ms ease-in-out forwards;
+}
+
+@keyframes slide-down {
+  0% {
+    translate: 0 -150%;
+  }
+
+  50% {
+    translate: 0 20%;
+  }
+
+  100% {
+    translate: 0 3%;
   }
 }
 
