@@ -93,6 +93,9 @@ textarea {
 
 .query-box {
   & > * {
+    display: flex;
+    align-items: center;
+    gap: 1em;
     padding: 1em;
     border: 1px solid var(--cl-border);
     border-radius: 5px;
@@ -101,9 +104,6 @@ textarea {
     &:hover {
       border-color: var(--cl-primary-green);
     }
-  }
-  & span {
-    margin-left: 1em;
   }
 }
 
@@ -152,8 +152,7 @@ textarea {
   background-color: var(--cl-neutral-dark-grey);
   color: var(--cl-neutral-white);
   translate: 0 -150%;
-  opacity: 0;
-  transition: translate 400ms ease-in-out, opacity 300ms ease-in-out;
+  transition: translate 500ms ease-in-out;
   & .msg-modal__title {
     display: flex;
     gap: 0.8em;
@@ -161,29 +160,26 @@ textarea {
   }
 }
 
-/* Utility */
+/* Utility-Animation */
 .hidden {
   display: none;
 }
 
 .slide-down {
-  animation: slide-down 400ms ease-in-out forwards;
+  animation: slide-down 500ms ease-in-out forwards;
 }
 
 @keyframes slide-down {
   0% {
     translate: 0 -150%;
-    opacity: 0;
   }
 
   50% {
-    translate: 0 20%;
-    opacity: 0.8;
+    translate: 0 10%;
   }
 
   100% {
     translate: 0 3%;
-    opacity: 1;
   }
 }
 
