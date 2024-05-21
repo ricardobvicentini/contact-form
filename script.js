@@ -1,30 +1,47 @@
 'use strict';
 
 const inputs = document.querySelectorAll('.input');
-const emailInput = document.getElementById('email');
 const subBtn = document.querySelector('.wrapper__btn');
-/* const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i; */
-const regex = /^\S+@\S+\.\S+$/;
+const regex = [/^[a-z ,.'-]+$/i, /^\S+@\S+\.\S+$/];
+let check = false;
+
+function errorMsg(el) {
+  el.style.borderColor = 'var(--cl-primary-red)';
+  el.nextElementSibling.classList.remove('hidden');
+}
+
+function removeErrorMsg(el) {
+  el.nextElementSibling.classList.add('hidden');
+  el.style.borderColor = 'var(--cl-border)';
+}
 
 subBtn.onclick = (e) => {
   e.preventDefault();
   inputs.forEach((input) => {
     if (!input.value) {
-      input.nextElementSibling.classList.remove('hidden');
-      input.style.borderColor = 'var(--cl-primary-red)';
+      errorMsg(input);
     } else {
-      input.nextElementSibling.classList.add('hidden');
-      input.style.borderColor = 'var(--cl-border)';
+      removeErrorMsg(input);
     }
   });
 };
 
-emailInput.addEventListener('change', (e) => {
-  if (!e.target.value.match(regex)) {
-    e.target.nextElementSibling.classList.remove('hidden');
-    e.target.style.borderColor = 'var(--cl-primary-red)';
-  } else {
-    e.target.nextElementSibling.classList.add('hidden');
-    e.target.style.borderColor = 'var(--cl-border)';
-  }
+inputs.forEach((input) => {
+  input.addEventListener('keyup', () => {
+    if (input['name'] === 'fName' || input['name'] === 'lName') {
+      if (!input.value.match(regex[0])) {
+        errorMsg(input);
+        input.nextElementSibling.innerHTML = 'Provide a valid name';
+      } else {
+        removeErrorMsg(input);
+      }
+    }
+    if (input['name'] === 'email') {
+      if (!input.value.match(regex[1])) {
+        errorMsg(input);
+      } else {
+        removeErrorMsg(input);
+      }
+    }
+  });
 });
