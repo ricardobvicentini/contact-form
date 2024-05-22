@@ -1,6 +1,7 @@
 'use strict';
 
 const inputs = document.querySelectorAll('.input');
+const radioBtns = document.querySelectorAll('.query-selector');
 const subBtn = document.querySelector('.wrapper__btn');
 const regex = [/^[a-z ,.'-]+$/i, /^\S+@\S+\.\S+$/];
 let check = false;
@@ -44,4 +45,12 @@ inputs.forEach((input) => {
       }
     }
   });
+});
+
+radioBtns.forEach((radioBtn) => {
+  radioBtn.onclick = () => {
+    radioBtn.classList.toggle('query-bg');
+    radioBtn.firstElementChild.classList.toggle('hidden');
+    radioBtn.firstElementChild.nextElementSibling.classList.toggle('hidden');
+  };
 });

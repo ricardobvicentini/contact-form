@@ -33,6 +33,12 @@ body {
   place-items: center;
 }
 
+h1,
+p,
+label {
+  user-select: none;
+}
+
 input,
 textarea {
   padding: 1em;
@@ -180,6 +186,10 @@ input[type='checkbox'] {
 /* Utility-Animation */
 .hidden {
   display: none;
+}
+
+.query-bg {
+  background-color: var(--cl-primary-light-green);
 }
 
 .slide-down {
