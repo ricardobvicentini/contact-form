@@ -2,10 +2,18 @@
 
 const inputs = document.querySelectorAll('.input');
 const radioBtns = document.querySelectorAll('.query-selector');
+const consentBtn = document.querySelector('.consent-box');
 const subBtn = document.querySelector('.wrapper__btn');
 const regex = [/^[a-z ,.'-]+$/i, /^\S+@\S+\.\S+$/];
-let check = false;
+let check = {
+  fName: false,
+  lName: false,
+  email: false,
+  query: false,
+  consent: false,
+};
 
+/*  Functions */
 function errorMsg(el) {
   el.style.borderColor = 'var(--cl-primary-red)';
   el.nextElementSibling.classList.remove('hidden');
@@ -16,15 +24,30 @@ function removeErrorMsg(el) {
   el.style.borderColor = 'var(--cl-border)';
 }
 
+function clearQuery(el) {
+  el.classList.remove('query-bg');
+  el.firstElementChild.classList.remove('hidden');
+  el.firstElementChild.nextElementSibling.classList.add('hidden');
+}
+
+function toggleBtns(el) {
+  el.firstElementChild.classList.toggle('hidden');
+  el.firstElementChild.nextElementSibling.classList.toggle('hidden');
+}
+
+/* Event listeners */
 subBtn.onclick = (e) => {
   e.preventDefault();
   inputs.forEach((input) => {
     if (!input.value) {
       errorMsg(input);
+      check[input.name] = false;
     } else {
       removeErrorMsg(input);
+      check[input.name] = true;
     }
   });
+  console.log(check);
 };
 
 inputs.forEach((input) => {
@@ -50,16 +73,13 @@ inputs.forEach((input) => {
 radioBtns.forEach((radioBtn) => {
   radioBtn.onclick = () => {
     radioBtn.classList.toggle('query-bg');
-    radioBtn.firstElementChild.classList.toggle('hidden');
-    radioBtn.firstElementChild.nextElementSibling.classList.toggle('hidden');
+    toggleBtns(radioBtn);
     radioBtn.classList.contains('general')
       ? clearQuery(radioBtn.nextElementSibling)
       : clearQuery(radioBtn.previousElementSibling);
   };
 });
 
-function clearQuery(el) {
-  el.classList.remove('query-bg');
-  el.firstElementChild.classList.remove('hidden');
-  el.firstElementChild.nextElementSibling.classList.add('hidden');
-}
+consentBtn.onclick = () => {
+  toggleBtns(consentBtn);
+};
