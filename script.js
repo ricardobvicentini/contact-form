@@ -52,5 +52,14 @@ radioBtns.forEach((radioBtn) => {
     radioBtn.classList.toggle('query-bg');
     radioBtn.firstElementChild.classList.toggle('hidden');
     radioBtn.firstElementChild.nextElementSibling.classList.toggle('hidden');
+    radioBtn.classList.contains('general')
+      ? clearQuery(radioBtn.nextElementSibling)
+      : clearQuery(radioBtn.previousElementSibling);
   };
 });
+
+function clearQuery(el) {
+  el.classList.remove('query-bg');
+  el.firstElementChild.classList.remove('hidden');
+  el.firstElementChild.nextElementSibling.classList.add('hidden');
+}
