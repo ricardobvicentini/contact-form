@@ -107,24 +107,25 @@ textarea {
   }
 }
 
-.query-btn {
-  position: relative;
+input[type='radio'] {
+  width: 20px;
+  height: 20px;
+  color: var(--cl-border);
+  pointer-events: none;
+  /* accent-color: hsl(169, 82%, 27%); */
 }
 
-/* .query-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  background-color: var(--cl-neutral-white);
-  border: 2px solid var(--cl-border);
-  border-radius: 100vw;
-  width: 1.25rem;
-  height: 1.3125rem;
-} */
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  color: var(--cl-border);
+  pointer-events: none;
+}
 
 .consent-box {
   display: flex;
+  width: fit-content;
+  cursor: pointer;
   & p {
     margin-left: 1em;
   }
