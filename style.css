@@ -49,8 +49,12 @@ textarea {
   resize: none;
   cursor: pointer;
   transition: border-color 200ms ease-in-out;
-  &:hover {
+  &:hover,
+  &:focus-visible {
     border-color: var(--cl-primary-green);
+  }
+  &:focus {
+    outline: none;
   }
 }
 
@@ -157,7 +161,8 @@ input[type='checkbox'] {
   color: var(--cl-neutral-white);
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background-color: hsl(169, 88%, 13%);
   }
 }
