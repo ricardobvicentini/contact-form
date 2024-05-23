@@ -27,6 +27,7 @@ function removeErrorMsg(el) {
 
 function clearQuery(el) {
   el.classList.remove('query-bg');
+  el.style.borderColor = 'var(--cl-border)';
   el.firstElementChild.classList.remove('hidden');
   el.firstElementChild.nextElementSibling.classList.add('hidden');
 }
@@ -52,7 +53,9 @@ subBtn.onclick = (e) => {
   }
   if (check[query.id] === false) {
     errorMsg(queryBox);
-    /* queryBox.children.style.borderColor = 'var(--cl-primary-red)'; */
+    const [general, support] = queryBox.children;
+    general.style.borderColor = 'var(--cl-primary-red)';
+    support.style.borderColor = 'var(--cl-primary-red)';
   }
   console.log(check);
 };
@@ -87,8 +90,8 @@ radioBtns.forEach((radioBtn) => {
     radioBtn.classList.toggle('query-bg');
     toggleBtns(radioBtn);
     removeErrorMsg(queryBox);
-    /* queryBox.children.style.borderColor = 'var(--cl-border)'; */
     check[queryBox.id] = true;
+    radioBtn.style.borderColor = 'var(--cl-border)';
     radioBtn.classList.contains('general')
       ? clearQuery(radioBtn.nextElementSibling)
       : clearQuery(radioBtn.previousElementSibling);
@@ -103,4 +106,4 @@ consentBtn.onclick = () => {
   } else check[consentBtn.id] = false;
 };
 
-console.log([...queryBox.children]);
+console.log(queryBox.childNodes);
