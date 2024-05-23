@@ -5,6 +5,7 @@ const radioBtns = document.querySelectorAll('.query-selector');
 const queryBox = document.querySelector('.query-box');
 const consentBtn = document.querySelector('.consent-box');
 const subBtn = document.querySelector('.wrapper__btn');
+const modal = document.querySelector('.msg-modal');
 const regex = [/^[a-z ,.'-]+$/i, /^\S+@\S+\.\S+$/];
 let check = {
   fName: false,
@@ -21,8 +22,8 @@ function errorMsg(el) {
 }
 
 function removeErrorMsg(el) {
-  el.nextElementSibling.classList.add('hidden');
   el.style.borderColor = 'var(--cl-border)';
+  el.nextElementSibling.classList.add('hidden');
 }
 
 function clearQuery(el) {
@@ -42,6 +43,19 @@ function checkTrue() {
   return valArr.every((item) => item === true);
 }
 
+function clearAll() {
+  inputs.forEach((input) => {
+    input.value = '';
+  });
+  radioBtns.forEach((radioBtn) => {
+    clearQuery(radioBtn);
+  });
+  toggleBtns(consentBtn);
+  setInterval(() => {
+    modal.classList.remove('slide-down');
+  }, 3000);
+}
+
 /* Event listeners */
 subBtn.onclick = (e) => {
   e.preventDefault();
@@ -57,7 +71,11 @@ subBtn.onclick = (e) => {
     general.style.borderColor = 'var(--cl-primary-red)';
     support.style.borderColor = 'var(--cl-primary-red)';
   }
-  console.log(check);
+  /* checkTrue() && modal.classList.add('slide-down'); */
+  if (checkTrue()) {
+    modal.classList.add('slide-down');
+    clearAll();
+  }
 };
 
 inputs.forEach((input) => {
@@ -81,7 +99,14 @@ inputs.forEach((input) => {
         check[input.name] = true;
       }
     }
-    if (!input.value) removeErrorMsg(input);
+    if (input['name'] === 'message') {
+      if (!input.value === '') {
+        check[input.name] = false;
+      } else {
+        removeErrorMsg(input);
+        check[input.name] = true;
+      }
+    }
   });
 });
 
@@ -105,5 +130,3 @@ consentBtn.onclick = () => {
     removeErrorMsg(consentBtn);
   } else check[consentBtn.id] = false;
 };
-
-console.log(queryBox.childNodes);

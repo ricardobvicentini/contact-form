@@ -198,21 +198,7 @@ input[type='checkbox'] {
 }
 
 .slide-down {
-  animation: slide-down 500ms ease-in-out forwards;
-}
-
-@keyframes slide-down {
-  0% {
-    translate: 0 -150%;
-  }
-
-  50% {
-    translate: 0 10%;
-  }
-
-  100% {
-    translate: 0 3%;
-  }
+  translate: 0 3%;
 }
 
 /* Footer */
