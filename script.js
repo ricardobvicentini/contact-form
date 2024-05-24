@@ -46,14 +46,17 @@ function checkTrue() {
 function clearAll() {
   inputs.forEach((input) => {
     input.value = '';
+    check[input.name] = false;
   });
   radioBtns.forEach((radioBtn) => {
     clearQuery(radioBtn);
   });
   toggleBtns(consentBtn);
-  setInterval(() => {
+  modal.onclick = () => {
     modal.classList.remove('slide-down');
-  }, 3000);
+    check[queryBox.id] = false;
+    check[consentBtn.id] = false;
+  };
 }
 
 /* Event listeners */
@@ -71,7 +74,6 @@ subBtn.onclick = (e) => {
     general.style.borderColor = 'var(--cl-primary-red)';
     support.style.borderColor = 'var(--cl-primary-red)';
   }
-  /* checkTrue() && modal.classList.add('slide-down'); */
   if (checkTrue()) {
     modal.classList.add('slide-down');
     clearAll();

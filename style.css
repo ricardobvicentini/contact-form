@@ -179,6 +179,7 @@ input[type='checkbox'] {
   border-radius: 10px;
   background-color: var(--cl-neutral-dark-grey);
   color: var(--cl-neutral-white);
+  cursor: pointer;
   translate: 0 -150%;
   transition: translate 500ms ease-in-out;
   & .msg-modal__title {
