@@ -51,11 +51,11 @@ function clearAll() {
   radioBtns.forEach((radioBtn) => {
     clearQuery(radioBtn);
   });
+  check[queryBox.id] = false;
+  check[consentBtn.id] = false;
   toggleBtns(consentBtn);
   modal.onclick = () => {
     modal.classList.remove('slide-down');
-    check[queryBox.id] = false;
-    check[consentBtn.id] = false;
   };
 }
 
@@ -74,10 +74,10 @@ subBtn.onclick = (e) => {
     general.style.borderColor = 'var(--cl-primary-red)';
     support.style.borderColor = 'var(--cl-primary-red)';
   }
-  if (checkTrue()) {
-    modal.classList.add('slide-down');
-    clearAll();
-  }
+  checkTrue()
+    ? modal.classList.add('slide-down')
+    : modal.classList.remove('slide-down');
+  checkTrue() && clearAll();
 };
 
 inputs.forEach((input) => {
