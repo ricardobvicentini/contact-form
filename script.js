@@ -63,7 +63,10 @@ function clearAll() {
 subBtn.onclick = (e) => {
   e.preventDefault();
   inputs.forEach((input) => {
-    if (!input.value) errorMsg(input);
+    if (!input.value) {
+      errorMsg(input);
+      input.nextElementSibling.innerHTML = 'This field is required';
+    }
   });
   if (check[consentBtn.id] === false) {
     errorMsg(consentBtn);
@@ -83,7 +86,7 @@ subBtn.onclick = (e) => {
 inputs.forEach((input) => {
   input.addEventListener('keyup', () => {
     if (input['name'] === 'fName' || input['name'] === 'lName') {
-      if (!input.value.match(regex[0])) {
+      if (!input.value.match(regex[0]) && input.value) {
         errorMsg(input);
         input.nextElementSibling.innerHTML = 'Provide a valid name';
         check[input.name] = false;
@@ -93,8 +96,10 @@ inputs.forEach((input) => {
       }
     }
     if (input['name'] === 'email') {
-      if (!input.value.match(regex[1])) {
+      if (!input.value.match(regex[1]) && input.value) {
         errorMsg(input);
+        input.nextElementSibling.innerHTML =
+          'Please enter a valid email address';
         check[input.name] = false;
       } else {
         removeErrorMsg(input);
@@ -102,7 +107,7 @@ inputs.forEach((input) => {
       }
     }
     if (input['name'] === 'message') {
-      if (!input.value === '') {
+      if (!input.value) {
         check[input.name] = false;
       } else {
         removeErrorMsg(input);

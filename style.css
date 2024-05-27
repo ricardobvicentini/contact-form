@@ -118,7 +118,8 @@ textarea {
     border-radius: 5px;
     cursor: pointer;
     transition: border-color 200ms ease-in-out;
-    &:hover {
+    &:hover,
+    &:focus-visible {
       border-color: var(--cl-primary-green);
     }
   }
@@ -130,6 +131,10 @@ input[type='radio'] {
   color: var(--cl-border);
   pointer-events: none;
   /* accent-color: hsl(169, 82%, 27%); */
+  &:hover,
+  &:focus-visible {
+    border-color: var(--cl-primary-green);
+  }
 }
 
 input[type='checkbox'] {
@@ -137,6 +142,10 @@ input[type='checkbox'] {
   height: 18px;
   color: var(--cl-border);
   pointer-events: none;
+  &:hover,
+  &:focus-visible {
+    border-color: var(--cl-primary-green);
+  }
 }
 
 .consent-box {
@@ -168,7 +177,6 @@ input[type='checkbox'] {
   font-size: inherit;
   color: var(--cl-neutral-white);
   cursor: pointer;
-  transition: background-image 200ms ease-in-out;
   &:hover,
   &:focus-visible {
     /* background-color: hsl(169, 88%, 13%); */
