@@ -55,7 +55,6 @@ textarea {
   font-size: inherit;
   resize: none;
   cursor: pointer;
-  transition: border 200ms ease-in-out;
   &:hover,
   &:focus-visible {
     border: 1px solid var(--cl-primary-green);
@@ -116,10 +115,12 @@ textarea {
     border: 1px solid var(--cl-border);
     border-radius: 5px;
     cursor: pointer;
-    transition: border-color 200ms ease-in-out;
+    & label {
+      cursor: pointer;
+    }
     &:hover,
     &:focus-visible {
-      border-color: var(--cl-primary-green);
+      border: 1px solid var(--cl-primary-green);
     }
   }
 }
@@ -143,7 +144,7 @@ input[type='checkbox'] {
   pointer-events: none;
   &:hover,
   &:focus-visible {
-    outline: 1px solid var(--cl-primary-green);
+    border: 1px solid var(--cl-primary-green);
   }
 }
 
