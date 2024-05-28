@@ -55,10 +55,13 @@ textarea {
   font-size: inherit;
   resize: none;
   cursor: pointer;
-  transition: border-color 200ms ease-in-out;
+  transition: border 200ms ease-in-out;
   &:hover,
   &:focus-visible {
-    outline: 1px solid var(--cl-primary-green);
+    border: 1px solid var(--cl-primary-green);
+  }
+  &:focus {
+    outline: none;
   }
 }
 
@@ -116,7 +119,7 @@ textarea {
     transition: border-color 200ms ease-in-out;
     &:hover,
     &:focus-visible {
-      outline: 1px solid var(--cl-primary-green);
+      border-color: var(--cl-primary-green);
     }
   }
 }

@@ -38,6 +38,26 @@ function toggleBtns(el) {
   el.firstElementChild.nextElementSibling.classList.toggle('hidden');
 }
 
+/* Select radios and checkbox for both keypress and click events */
+function selectQuery(el) {
+  el.classList.toggle('query-bg');
+  toggleBtns(el);
+  removeErrorMsg(queryBox);
+  check[queryBox.id] = true;
+  el.style.borderColor = 'var(--cl-border)';
+  el.classList.contains('general')
+    ? clearQuery(el.nextElementSibling)
+    : clearQuery(el.previousElementSibling);
+}
+
+function selectCheckbox(el) {
+  toggleBtns(el);
+  if (check[el.id] === false) {
+    check[el.id] = true;
+    removeErrorMsg(el);
+  } else check[el.id] = false;
+}
+
 function checkTrue() {
   const valArr = Object.values(check);
   return valArr.every((item) => item === true);
@@ -119,21 +139,20 @@ inputs.forEach((input) => {
 
 radioBtns.forEach((radioBtn) => {
   radioBtn.onclick = () => {
-    radioBtn.classList.toggle('query-bg');
-    toggleBtns(radioBtn);
-    removeErrorMsg(queryBox);
-    check[queryBox.id] = true;
-    radioBtn.style.borderColor = 'var(--cl-border)';
-    radioBtn.classList.contains('general')
-      ? clearQuery(radioBtn.nextElementSibling)
-      : clearQuery(radioBtn.previousElementSibling);
+    selectQuery(radioBtn);
+  };
+});
+
+radioBtns.forEach((radioBtn) => {
+  radioBtn.onkeypress = () => {
+    selectQuery(radioBtn);
   };
 });
 
 consentBtn.onclick = () => {
-  toggleBtns(consentBtn);
-  if (check[consentBtn.id] === false) {
-    check[consentBtn.id] = true;
-    removeErrorMsg(consentBtn);
-  } else check[consentBtn.id] = false;
+  selectCheckbox(consentBtn);
+};
+
+consentBtn.onkeypress = () => {
+  selectCheckbox(consentBtn);
 };
