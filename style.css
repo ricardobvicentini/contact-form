@@ -55,8 +55,8 @@ textarea {
   font-size: inherit;
   resize: none;
   cursor: pointer;
-  &:hover,
-  &:focus-visible {
+  caret-color: var(--cl-primary-green);
+  &:hover {
     border: 1px solid var(--cl-primary-green);
   }
   &:focus {
@@ -144,7 +144,7 @@ input[type='checkbox'] {
   pointer-events: none;
   &:hover,
   &:focus-visible {
-    border: 1px solid var(--cl-primary-green);
+    outline: 1px solid var(--cl-primary-green);
   }
 }
 

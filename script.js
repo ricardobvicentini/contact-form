@@ -42,8 +42,10 @@ function toggleBtns(el) {
 function selectQuery(el) {
   el.classList.toggle('query-bg');
   toggleBtns(el);
-  removeErrorMsg(queryBox);
-  check[queryBox.id] = true;
+  if (check[queryBox.id] === false) {
+    check[queryBox.id] = true;
+    removeErrorMsg(queryBox);
+  } else check[queryBox.id] = false;
   el.style.borderColor = 'var(--cl-border)';
   el.classList.contains('general')
     ? clearQuery(el.nextElementSibling)
@@ -92,15 +94,16 @@ subBtn.onclick = (e) => {
     errorMsg(consentBtn);
   }
   if (check[query.id] === false) {
-    errorMsg(queryBox);
     const [general, support] = queryBox.children;
     general.style.borderColor = 'var(--cl-primary-red)';
     support.style.borderColor = 'var(--cl-primary-red)';
+    errorMsg(queryBox);
   }
   checkTrue()
     ? modal.classList.add('slide-down')
     : modal.classList.remove('slide-down');
   checkTrue() && clearAll();
+  console.log(check);
 };
 
 inputs.forEach((input) => {
